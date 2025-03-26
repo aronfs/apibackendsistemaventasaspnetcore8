@@ -102,3 +102,4 @@ C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.API\bin\Debug\net8.0\S
 C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.API\bin\Debug\net8.0\SistemaVenta.Utility.pdb
 C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.API\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.API\obj\Debug\net8.0\SistemaVenta.API.sourcelink.json

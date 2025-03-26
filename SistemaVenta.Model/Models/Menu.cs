@@ -11,6 +11,71 @@ public partial class Menu
 
     public string? Icono { get; set; }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public string? Url { get; set; }
 
     public virtual ICollection<MenuRol> MenuRols { get; set; } = new List<MenuRol>();

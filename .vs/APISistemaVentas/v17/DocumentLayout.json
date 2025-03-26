@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.bll\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|solutionrelative:sistemaventa.bll\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.bll\\services\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|solutionrelative:sistemaventa.bll\\services\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|solutionrelative:sistemaventa.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.bll\\services\\contrato\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|solutionrelative:sistemaventa.bll\\services\\contrato\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DD49F7B-B172-4E48-90C9-639869F957CA}|SistemaVenta.Utility\\SistemaVenta.Utility.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.utility\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DD49F7B-B172-4E48-90C9-639869F957CA}|SistemaVenta.Utility\\SistemaVenta.Utility.csproj|solutionrelative:sistemaventa.utility\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E6F42FD5-604D-49D1-B18B-AB736AE4F6D8}|SistemaVenta.DTO\\SistemaVenta.DTO.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.dto\\sesiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6F42FD5-604D-49D1-B18B-AB736AE4F6D8}|SistemaVenta.DTO\\SistemaVenta.DTO.csproj|solutionrelative:sistemaventa.dto\\sesiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.bll\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|solutionrelative:sistemaventa.bll\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,8 +17,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "DockedWidth": 248,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,63 +26,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUsuarioService.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
-              "RelativeToolTip": "SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ProductoService.cs",
+              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\ProductoService.cs",
+              "RelativeDocumentMoniker": "SistemaVenta.BLL\\Services\\ProductoService.cs",
+              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\ProductoService.cs",
+              "RelativeToolTip": "SistemaVenta.BLL\\Services\\ProductoService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAwFsAAACJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:53:24.471Z"
-            },
+              "WhenOpened": "2025-03-26T15:07:58.74Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 152,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "SistemaVenta.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowCcAAAAeAAAAAAAAAA==",
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAcwCIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:47:55.776Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SesionDTO.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.DTO\\SesionDTO.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.DTO\\SesionDTO.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.DTO\\SesionDTO.cs",
-              "RelativeToolTip": "SistemaVenta.DTO\\SesionDTO.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAASwBEAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:43:54.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AutoMapperProfile.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.Utility\\AutoMapperProfile.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.Utility\\AutoMapperProfile.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.Utility\\AutoMapperProfile.cs",
-              "RelativeToolTip": "SistemaVenta.Utility\\AutoMapperProfile.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAgwBUAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:41:36.891Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.BLL\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\Services\\AuthService.cs",
-              "RelativeToolTip": "SistemaVenta.BLL\\Services\\AuthService.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAewDcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:38:24.783Z",
+              "WhenOpened": "2025-03-26T15:08:20.817Z",
               "EditorCaption": ""
             }
           ]

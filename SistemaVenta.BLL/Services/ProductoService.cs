@@ -41,9 +41,7 @@ namespace SistemaVenta.BLL.Services
                         Precio = p.Precio,
                         EsActivo = p.EsActivo,
                         FechaRegistro = p.FechaRegistro,
-                        Foto = !string.IsNullOrEmpty(p.Foto)
-                                ? $"data:image/jpeg;base64,{p.Foto}"
-                                : null  // Agregar el prefijo para visualizarlo correctamente
+                        Foto = p.Foto
                     }).ToList();
 
                 return _mapper.Map<List<ProductoDTO>>(listaProductos);
@@ -60,16 +58,8 @@ namespace SistemaVenta.BLL.Services
             {
                 var productoModelo = _mapper.Map<Producto>(modelo);
 
-                // Validar si la imagen es Base64 válida antes de guardarla
-                if (!string.IsNullOrEmpty(modelo.foto) && EsBase64Valida(modelo.foto))
-                {
-                    productoModelo.Foto = modelo.foto;
-                }
-                else
-                {
-                    productoModelo.Foto = null;  // O ruta de imagen por defecto
-                }
-
+                //Guardar Foto directamente Url
+                productoModelo.Foto = !string.IsNullOrEmpty(modelo.foto) ? modelo.foto : null;
                 var productoCreado = await _productoRepository.Crear(productoModelo);
 
                 if (productoCreado.IdProducto == 0)
@@ -99,11 +89,8 @@ namespace SistemaVenta.BLL.Services
                 productoEncontrado.Precio = productoModelo.Precio;
                 productoEncontrado.EsActivo = productoModelo.EsActivo;
 
-                // Actualizar la imagen solo si se proporciona una nueva
-                if (!string.IsNullOrEmpty(productoModelo.Foto) && EsBase64Valida(productoModelo.Foto))
-                {
-                    productoEncontrado.Foto = productoModelo.Foto;
-                }
+                productoEncontrado.Foto = !string.IsNullOrEmpty(productoEncontrado.Foto) ? productoModelo.Foto : productoEncontrado.Foto;
+               
 
                 bool respuesta = await _productoRepository.Editar(productoEncontrado);
 
@@ -139,11 +126,6 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        // Método para validar que el string sea un Base64 válido
-        private bool EsBase64Valida(string base64)
-        {
-            Span<byte> buffer = new Span<byte>(new byte[base64.Length]);
-            return Convert.TryFromBase64String(base64, buffer, out _);
-        }
+      
     }
 }

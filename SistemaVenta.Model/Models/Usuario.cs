@@ -13,8 +13,6 @@ public partial class Usuario
 
     public int? IdRol { get; set; }
 
-  
-
     public string? Clave { get; set; }
 
     public bool? EsActivo { get; set; }

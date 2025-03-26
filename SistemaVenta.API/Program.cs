@@ -80,7 +80,8 @@ builder.Services.AddCors(options =>
     {
         policy.AllowAnyOrigin()    // Permite cualquier origen (ajustar según seguridad)
               .AllowAnyMethod()    // Permite cualquier método (GET, POST, etc.)
-              .AllowAnyHeader();   // Permite cualquier encabezado
+              .AllowAnyHeader()
+              .WithOrigins("http://10.0.2.2");   // Permite cualquier encabezado
     });
 });
 
@@ -95,6 +96,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sistema de Ventas API v1");
     });
 }
+app.Urls.Add("http://0.0.0.0:5185");
+
 app.UseCors("NuevaPoliticaCors");
 app.UseAuthentication();  // Autenticación antes de la autorización
 app.UseAuthorization();

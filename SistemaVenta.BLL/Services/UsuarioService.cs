@@ -39,9 +39,7 @@ namespace SistemaVenta.BLL.Services
                         Clave = u.Clave,
                         EsActivo = u.EsActivo,
                         FechaRegistro = u.FechaRegistro,
-                        Foto = !string.IsNullOrEmpty(u.Foto)
-                            ? $"data:image/jpeg;base64,{u.Foto}"
-                            : null
+                        Foto = u.Foto
                     }).ToList();
 
                 return _mapper.Map<List<UsuarioDTO>>(listaUsuario);
@@ -52,20 +50,14 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        public async Task<UsuarioDTO> Crear(UsuarioDTO modelo)
-        {
-            try
-            {
+         public async Task<UsuarioDTO> Crear(UsuarioDTO modelo)
+         {
+             try
+             {
                 var usuarioCrear = _mapper.Map<Usuario>(modelo);
 
-                if (!string.IsNullOrEmpty(modelo.Foto) && EsBase64Valida(modelo.Foto))
-                {
-                    usuarioCrear.Foto = modelo.Foto;
-                }
-                else
-                {
-                    usuarioCrear.Foto = null;
-                }
+                // Guardar directamente la URL de la imagen
+                usuarioCrear.Foto = !string.IsNullOrEmpty(modelo.Foto) ? modelo.Foto : null;
 
                 var usuarioCreado = await _usuarioRepository.Crear(usuarioCrear);
 
@@ -82,6 +74,8 @@ namespace SistemaVenta.BLL.Services
                 throw;
             }
         }
+        
+        
 
         public async Task<bool> Editar(UsuarioDTO modelo)
         {
@@ -98,11 +92,9 @@ namespace SistemaVenta.BLL.Services
                 usuarioEncontrado.IdRol = usuarioModelo.IdRol;
                 usuarioEncontrado.Clave = usuarioModelo.Clave;
                 usuarioEncontrado.EsActivo = usuarioModelo.EsActivo;
+                // Guardar la URL en la base de datos
+                usuarioEncontrado.Foto = !string.IsNullOrEmpty(usuarioModelo.Foto) ? usuarioModelo.Foto : usuarioEncontrado.Foto;
 
-                if (!string.IsNullOrEmpty(usuarioModelo.Foto) && EsBase64Valida(usuarioModelo.Foto))
-                {
-                    usuarioEncontrado.Foto = usuarioModelo.Foto;
-                }
 
                 bool respuesta = await _usuarioRepository.Editar(usuarioEncontrado);
 
@@ -156,19 +148,14 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        // Método para validar que el string sea un Base64 válido
-        private bool EsBase64Valida(string base64)
-        {
-            Span<byte> buffer = new Span<byte>(new byte[base64.Length]);
-            return Convert.TryFromBase64String(base64, buffer, out _);
-        }
-
+     
+      
         public async Task<string?> ObtenerFotoPorCorreo(string correo)
         {
             try
             {
                 var usuario = await _usuarioRepository.Obtener(u => u.Correo == correo);
-                return usuario != null ? FormatearImagen(usuario.Foto) : null;
+                return usuario?.Foto;  // Retorna la URL directamente
             }
             catch (Exception ex)
             {
@@ -176,12 +163,6 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        // Método reutilizable para manejar imágenes base64
-        private string? FormatearImagen(string? base64)
-        {
-            return (!string.IsNullOrEmpty(base64) && EsBase64Valida(base64))
-                ? $"data:image/jpeg;base64,{base64}"
-                : null;
-        }
+       
     }
 }
