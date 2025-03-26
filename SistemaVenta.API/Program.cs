@@ -81,7 +81,8 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin()    // Permite cualquier origen (ajustar según seguridad)
               .AllowAnyMethod()    // Permite cualquier método (GET, POST, etc.)
               .AllowAnyHeader()
-              .WithOrigins("http://10.0.2.2");   // Permite cualquier encabezado
+              .AllowCredentials()
+              .WithOrigins("http://localhost:4200", "http://10.0.2.2");   // Permite cualquier encabezado
     });
 });
 
