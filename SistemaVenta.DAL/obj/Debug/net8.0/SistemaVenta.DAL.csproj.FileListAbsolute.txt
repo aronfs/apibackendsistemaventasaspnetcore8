@@ -14,3 +14,5 @@ C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.DAL\bin\Debug\net8.0\S
 C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.DAL\obj\Debug\net8.0\SistemaVenta.DAL.csproj.AssemblyReference.cache
 C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.DAL\obj\Debug\net8.0\SistemaV.EE7A9206.Up2Date
 C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.DAL\obj\Debug\net8.0\SistemaVenta.DAL.sourcelink.json
+C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.DAL\obj\Debug\net8.0\EFCoreNpgsqlNodaTime.cs
+C:\Users\arons\source\repos\APISistemaVentas\SistemaVenta.DAL\obj\Debug\net8.0\EFCoreNpgsqlNetTopologySuite.cs

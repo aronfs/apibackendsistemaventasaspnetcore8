@@ -39,7 +39,7 @@ namespace SistemaVenta.BLL.Services
                         Clave = u.Clave,
                         EsActivo = u.EsActivo,
                         FechaRegistro = u.FechaRegistro,
-                        Foto = u.Foto
+                        foto = u.foto
                     }).ToList();
 
                 return _mapper.Map<List<UsuarioDTO>>(listaUsuario);
@@ -57,7 +57,7 @@ namespace SistemaVenta.BLL.Services
                 var usuarioCrear = _mapper.Map<Usuario>(modelo);
 
                 // Guardar directamente la URL de la imagen
-                usuarioCrear.Foto = !string.IsNullOrEmpty(modelo.Foto) ? modelo.Foto : null;
+                usuarioCrear.foto = !string.IsNullOrEmpty(modelo.foto) ? modelo.foto : null;
 
                 var usuarioCreado = await _usuarioRepository.Crear(usuarioCrear);
 
@@ -93,7 +93,7 @@ namespace SistemaVenta.BLL.Services
                 usuarioEncontrado.Clave = usuarioModelo.Clave;
                 usuarioEncontrado.EsActivo = usuarioModelo.EsActivo;
                 // Guardar la URL en la base de datos
-                usuarioEncontrado.Foto = !string.IsNullOrEmpty(usuarioModelo.Foto) ? usuarioModelo.Foto : usuarioEncontrado.Foto;
+                usuarioEncontrado.foto = !string.IsNullOrEmpty(usuarioModelo.foto) ? usuarioModelo.foto : usuarioEncontrado.foto;
 
 
                 bool respuesta = await _usuarioRepository.Editar(usuarioEncontrado);
@@ -155,7 +155,7 @@ namespace SistemaVenta.BLL.Services
             try
             {
                 var usuario = await _usuarioRepository.Obtener(u => u.Correo == correo);
-                return usuario?.Foto;  // Retorna la URL directamente
+                return usuario?.foto;  // Retorna la URL directamente
             }
             catch (Exception ex)
             {

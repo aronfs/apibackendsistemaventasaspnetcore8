@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|solutionrelative:sistemaventa.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.api\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|solutionrelative:sistemaventa.api\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,24 +26,11 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Program.cs",
               "RelativeDocumentMoniker": "SistemaVenta.API\\Program.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Program.cs*",
-              "RelativeToolTip": "SistemaVenta.API\\Program.cs*",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAFMAAAAhAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Program.cs",
+              "RelativeToolTip": "SistemaVenta.API\\Program.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAiwJQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:35:17.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductoController.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Controllers\\ProductoController.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.API\\Controllers\\ProductoController.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Controllers\\ProductoController.cs",
-              "RelativeToolTip": "SistemaVenta.API\\Controllers\\ProductoController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:13:53.495Z",
+              "WhenOpened": "2025-03-28T23:33:08.903Z",
               "EditorCaption": ""
             }
           ]

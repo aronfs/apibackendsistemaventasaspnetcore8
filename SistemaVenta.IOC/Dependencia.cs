@@ -21,7 +21,7 @@ namespace SistemaVenta.IOC
         {
             services.AddDbContext<DbventaContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("cadenaSQL"));
+                options.UseNpgsql(configuration.GetConnectionString("cadenaSQL"));
             });
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IVentaRepository, VentaRepository>();

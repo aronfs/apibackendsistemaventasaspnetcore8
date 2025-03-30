@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using SistemaVenta.Model.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace SistemaVenta.DAL.DBContext;
 
@@ -16,222 +17,208 @@ public partial class DbventaContext : DbContext
     {
     }
 
-    public virtual DbSet<Categoria> Categoria { get; set; }
-
-    public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
-
+    public virtual DbSet<Categoria> Categorias { get; set; } // Cambiado a plural para convención
+    public virtual DbSet<DetalleVenta> DetalleVentas { get; set; } // Cambiado a plural
     public virtual DbSet<Menu> Menus { get; set; }
-
     public virtual DbSet<MenuRol> MenuRols { get; set; }
-
     public virtual DbSet<NumeroDocumento> NumeroDocumentos { get; set; }
-
     public virtual DbSet<Producto> Productos { get; set; }
-
     public virtual DbSet<Rol> Rols { get; set; }
-
     public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Venta> Ventas { get; set; } // Cambiado a plural
 
-    public virtual DbSet<Venta> Venta { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+    
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasPostgresExtension("uuid-ossp"); // Para soporte de UUID si es necesario
+
         modelBuilder.Entity<Categoria>(entity =>
         {
-            entity.HasKey(e => e.IdCategoria).HasName("PK__Categori__8A3D240CA32876B7");
+            entity.HasKey(e => e.IdCategoria).HasName("pk_categoria");
+            entity.ToTable("categoria"); // Nombre de tabla en minúsculas para PostgreSQL
 
-            entity.Property(e => e.IdCategoria).HasColumnName("idCategoria");
+            entity.Property(e => e.IdCategoria).HasColumnName("idcategoria");
             entity.Property(e => e.EsActivo)
                 .HasDefaultValue(true)
-                .HasColumnName("esActivo");
+                .HasColumnName("esactivo");
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasDefaultValueSql("NOW()") // Cambiado a NOW() para PostgreSQL
+                .HasColumnName("fecharegistro");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
         });
 
         modelBuilder.Entity<DetalleVenta>(entity =>
         {
-            entity.HasKey(e => e.IdDetalleVenta).HasName("PK__DetalleV__BFE2843FC152097E");
+            entity.HasKey(e => e.IdDetalleVenta).HasName("pk_detalleventa");
+            entity.ToTable("detalleventa"); // Nombre de tabla en minúsculas
 
-            entity.Property(e => e.IdDetalleVenta).HasColumnName("idDetalleVenta");
+            entity.Property(e => e.IdDetalleVenta).HasColumnName("iddetalleventa");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
-            entity.Property(e => e.IdProducto).HasColumnName("idProducto");
-            entity.Property(e => e.IdVenta).HasColumnName("idVenta");
+            entity.Property(e => e.IdProducto).HasColumnName("idproducto");
+            entity.Property(e => e.IdVenta).HasColumnName("idventa");
             entity.Property(e => e.Precio)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(10,2)")
                 .HasColumnName("precio");
             entity.Property(e => e.Total)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(10,2)")
                 .HasColumnName("total");
 
-            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.DetalleVenta)
+            entity.HasOne(d => d.IdProductoNavigation)
+                .WithMany(p => p.DetalleVenta)
                 .HasForeignKey(d => d.IdProducto)
-                .HasConstraintName("FK__DetalleVe__idPro__412EB0B6");
+                .HasConstraintName("fk_detalleventa_producto");
 
-            entity.HasOne(d => d.IdVentaNavigation).WithMany(p => p.DetalleVenta)
+            entity.HasOne(d => d.IdVentaNavigation)
+                .WithMany(p => p.DetalleVenta)
                 .HasForeignKey(d => d.IdVenta)
-                .HasConstraintName("FK__DetalleVe__idVen__403A8C7D");
+                .HasConstraintName("fk_detalleventa_venta");
         });
 
         modelBuilder.Entity<Menu>(entity =>
         {
-            entity.HasKey(e => e.IdMenu).HasName("PK__Menu__C26AF483ECE078D0");
+            entity.HasKey(e => e.IdMenu).HasName("pk_menu");
+            entity.ToTable("menu");
 
-            entity.ToTable("Menu");
-
-            entity.Property(e => e.IdMenu).HasColumnName("idMenu");
+            entity.Property(e => e.IdMenu).HasColumnName("idmenu");
             entity.Property(e => e.Icono)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("icono");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
             entity.Property(e => e.Url)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("url");
         });
 
         modelBuilder.Entity<MenuRol>(entity =>
         {
-            entity.HasKey(e => e.IdMenuRol).HasName("PK__MenuRol__9D6D61A4630160FA");
+            entity.HasKey(e => e.IdMenuRol).HasName("pk_menurol");
+            entity.ToTable("menurol");
 
-            entity.ToTable("MenuRol");
+            entity.Property(e => e.IdMenuRol).HasColumnName("idmenurol");
+            entity.Property(e => e.IdMenu).HasColumnName("idmenu");
+            entity.Property(e => e.IdRol).HasColumnName("idrol");
 
-            entity.Property(e => e.IdMenuRol).HasColumnName("idMenuRol");
-            entity.Property(e => e.IdMenu).HasColumnName("idMenu");
-            entity.Property(e => e.IdRol).HasColumnName("idRol");
-
-            entity.HasOne(d => d.IdMenuNavigation).WithMany(p => p.MenuRols)
+            entity.HasOne(d => d.IdMenuNavigation)
+                .WithMany(p => p.MenuRols)
                 .HasForeignKey(d => d.IdMenu)
-                .HasConstraintName("FK__MenuRol__idMenu__29572725");
+                .HasConstraintName("fk_menurol_menu");
 
-            entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.MenuRols)
+            entity.HasOne(d => d.IdRolNavigation)
+                .WithMany(p => p.MenuRols)
                 .HasForeignKey(d => d.IdRol)
-                .HasConstraintName("FK__MenuRol__idRol__2A4B4B5E");
+                .HasConstraintName("fk_menurol_rol");
         });
 
         modelBuilder.Entity<NumeroDocumento>(entity =>
         {
-            entity.HasKey(e => e.IdNumeroDocumento).HasName("PK__NumeroDo__471E421AE59ED1C4");
+            entity.HasKey(e => e.IdNumeroDocumento).HasName("pk_numerodocumento");
+            entity.ToTable("numerodocumento");
 
-            entity.ToTable("NumeroDocumento");
-
-            entity.Property(e => e.IdNumeroDocumento).HasColumnName("idNumeroDocumento");
+            entity.Property(e => e.IdNumeroDocumento).HasColumnName("idnumerodocumento");
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
-            entity.Property(e => e.UltimoNumero).HasColumnName("ultimo_Numero");
+                .HasDefaultValueSql("NOW()")
+                .HasColumnName("fecharegistro");
+            entity.Property(e => e.UltimoNumero).HasColumnName("ultimo_numero");
         });
 
         modelBuilder.Entity<Producto>(entity =>
         {
-            entity.HasKey(e => e.IdProducto).HasName("PK__Producto__07F4A132F78739CF");
+            entity.HasKey(e => e.IdProducto).HasName("pk_producto");
+            entity.ToTable("producto");
 
-            entity.ToTable("Producto");
-
-            entity.Property(e => e.IdProducto).HasColumnName("idProducto");
+            entity.Property(e => e.IdProducto).HasColumnName("idproducto");
             entity.Property(e => e.EsActivo)
                 .HasDefaultValue(true)
-                .HasColumnName("esActivo");
+                .HasColumnName("esactivo");
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
-            entity.Property(e => e.IdCategoria).HasColumnName("idCategoria");
+                .HasDefaultValueSql("NOW()")
+                .HasColumnName("fecharegistro");
+            entity.Property(e => e.IdCategoria).HasColumnName("idcategoria");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
             entity.Property(e => e.Precio)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(10,2)")
                 .HasColumnName("precio");
             entity.Property(e => e.Stock).HasColumnName("stock");
+            entity.Property(e => e.Foto)
+                   .HasMaxLength(100)
+                   .HasColumnName("foto");
 
-            entity.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.Productos)
+            entity.HasOne(d => d.IdCategoriaNavigation)
+                .WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdCategoria)
-                .HasConstraintName("FK__Producto__idCate__35BCFE0A");
+                .HasConstraintName("fk_producto_categoria");
         });
 
         modelBuilder.Entity<Rol>(entity =>
         {
-            entity.HasKey(e => e.IdRol).HasName("PK__Rol__3C872F764851F9DE");
+            entity.HasKey(e => e.IdRol).HasName("pk_rol");
+            entity.ToTable("rol");
 
-            entity.ToTable("Rol");
-
-            entity.Property(e => e.IdRol).HasColumnName("idRol");
+            entity.Property(e => e.IdRol).HasColumnName("idrol");
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasDefaultValueSql("NOW()")
+                .HasColumnName("fecharegistro");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__645723A601052AC1");
+            entity.HasKey(e => e.IdUsuario).HasName("pk_usuario");
+            entity.ToTable("usuario");
 
-            entity.ToTable("Usuario");
-
-            entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+            entity.Property(e => e.IdUsuario).HasColumnName("idusuario");
             entity.Property(e => e.Clave)
                 .HasMaxLength(40)
-                .IsUnicode(false)
                 .HasColumnName("clave");
             entity.Property(e => e.Correo)
                 .HasMaxLength(40)
-                .IsUnicode(false)
                 .HasColumnName("correo");
             entity.Property(e => e.EsActivo)
                 .HasDefaultValue(true)
-                .HasColumnName("esActivo");
+                .HasColumnName("esactivo");
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
-            entity.Property(e => e.IdRol).HasColumnName("idRol");
+                .HasDefaultValueSql("NOW()")
+                .HasColumnName("fecharegistro");
+            entity.Property(e => e.IdRol).HasColumnName("idrol");
             entity.Property(e => e.NombreCompleto)
                 .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nombreCompleto");
+                .HasColumnName("nombrecompleto");
 
-            entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.Usuarios)
+            entity.HasOne(d => d.IdRolNavigation)
+                .WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRol)
-                .HasConstraintName("FK__Usuario__idRol__2D27B809");
+                .HasConstraintName("fk_usuario_rol");
         });
 
         modelBuilder.Entity<Venta>(entity =>
         {
-            entity.HasKey(e => e.IdVenta).HasName("PK__Venta__077D56140FB6B8B9");
+            entity.HasKey(e => e.IdVenta).HasName("pk_venta");
+            entity.ToTable("venta");
 
-            entity.Property(e => e.IdVenta).HasColumnName("idVenta");
+            entity.Property(e => e.IdVenta).HasColumnName("idventa");
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasDefaultValueSql("NOW()")
+                .HasColumnName("fecharegistro");
             entity.Property(e => e.NumeroDocumento)
                 .HasMaxLength(40)
-                .IsUnicode(false)
-                .HasColumnName("numeroDocumento");
+                .HasColumnName("numerodocumento");
             entity.Property(e => e.TipoPago)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("tipoPago");
+                .HasColumnName("tipopago");
             entity.Property(e => e.Total)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(10,2)")
                 .HasColumnName("total");
         });
 

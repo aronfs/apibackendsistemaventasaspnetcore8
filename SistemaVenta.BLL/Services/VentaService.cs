@@ -51,8 +51,14 @@ namespace SistemaVenta.BLL.Services
             {
                 if (buscarPro == "fecha")
                 {
-                    DateTime fechaInicioConvertida = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-EC"));
-                    DateTime fechaFinConvertida = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-EC"));
+                    DateTime fechaInicioConvertida = DateTime.SpecifyKind(
+                        DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-EC")),
+                        DateTimeKind.Utc);
+
+                    DateTime fechaFinConvertida = DateTime.SpecifyKind(
+                        DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-EC")),
+                        DateTimeKind.Utc);
+
                     listaResultado = await queryVenta.Where(
                         v =>
                         v.FechaRegistro.Value.Date >= fechaInicioConvertida.Date &&
@@ -60,19 +66,14 @@ namespace SistemaVenta.BLL.Services
                         .Include(dv => dv.DetalleVenta)
                         .ThenInclude(p => p.IdProductoNavigation)
                         .ToListAsync();
-
-                   
                 }
                 else
                 {
                     listaResultado = await queryVenta.Where(
-                      v =>
-                      v.NumeroDocumento == numeroVenta)
+                      v => v.NumeroDocumento == numeroVenta)
                       .Include(dv => dv.DetalleVenta)
                       .ThenInclude(p => p.IdProductoNavigation)
                       .ToListAsync();
-
-                    
                 }
             }
             catch
@@ -82,7 +83,7 @@ namespace SistemaVenta.BLL.Services
             return _mapper.Map<List<VentaDTO>>(listaResultado);
         }
 
-       
+
 
         public async Task<List<ReporteDTO>> Reporte(string fechaInicio, string fechaFin)
         {
@@ -91,8 +92,14 @@ namespace SistemaVenta.BLL.Services
 
             try
             {
-                DateTime fechaInicioConvertida = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-EC"));
-                DateTime fechaFinConvertida = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-EC"));
+                DateTime fechaInicioConvertida = DateTime.SpecifyKind(
+                    DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-EC")),
+                    DateTimeKind.Utc);
+
+                DateTime fechaFinConvertida = DateTime.SpecifyKind(
+                    DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-EC")),
+                    DateTimeKind.Utc);
+
                 ListaResultado = await queryVenta
                     .Include(p => p.IdProductoNavigation)
                     .Include(v => v.IdVentaNavigation)

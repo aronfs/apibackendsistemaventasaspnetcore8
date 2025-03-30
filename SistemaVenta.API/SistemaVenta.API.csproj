@@ -12,6 +12,14 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+		<PackageReference Include="Npgsql" Version="9.0.3" />
+		<PackageReference Include="Npgsql.DependencyInjection" Version="9.0.3" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="9.0.4" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime" Version="9.0.4" />
+		<PackageReference Include="Npgsql.Json.NET" Version="9.0.3" />
+		<PackageReference Include="Npgsql.NetTopologySuite" Version="9.0.3" />
+		<PackageReference Include="Npgsql.OpenTelemetry" Version="9.0.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
 	</ItemGroup>

@@ -38,17 +38,17 @@ namespace SistemaVenta.Utility
             #region Usuario
             CreateMap<Usuario, UsuarioDTO>()
                 .ForMember(dest => dest.EsActivo, opt => opt.MapFrom(src => src.EsActivo == true ? 1 : 0))
-                .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.Foto)); // Se agregó el campo Foto
+                .ForMember(dest => dest.foto, opt => opt.MapFrom(src => src.foto)); // Se agregó el campo Foto
                 
 
             CreateMap<Usuario, SesionDTO>()
                 .ForMember(dest => dest.RolDescripcion, opt => opt.MapFrom(src => src.IdRolNavigation.Nombre))
-                .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.Foto)); // Se agregó el campo Foto
+                .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.foto)); // Se agregó el campo Foto
 
             CreateMap<UsuarioDTO, Usuario>()
                 .ForMember(dest => dest.IdRolNavigation, opt => opt.Ignore())
                 .ForMember(dest => dest.EsActivo, opt => opt.MapFrom(src => src.EsActivo == 1 ? true : false))
-                .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.Foto)); // Se agregó el campo Foto
+                .ForMember(dest => dest.foto, opt => opt.MapFrom(src => src.foto)); // Se agregó el campo Foto
             #endregion Usuario
 
 

@@ -47,7 +47,7 @@ namespace SistemaVenta.DAL.Repositorios
 
                     modelo.NumeroDocumento = numeroVenta;
 
-                    await _context.Venta.AddAsync(modelo);
+                    await _context.Ventas.AddAsync(modelo);
                     await _context.SaveChangesAsync();
 
                     ventaGenerada = modelo;

@@ -3,6 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SistemaVenta.IOC;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using SistemaVenta.DAL.DBContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 // Servicios esenciales
 builder.Services.AddControllers();
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
@@ -106,3 +110,52 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

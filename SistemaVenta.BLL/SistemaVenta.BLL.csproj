@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.70.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SistemaVenta.DAL\SistemaVenta.DAL.csproj" />
     <ProjectReference Include="..\SistemaVenta.DTO\SistemaVenta.DTO.csproj" />
     <ProjectReference Include="..\SistemaVenta.Model\SistemaVenta.Model.csproj" />

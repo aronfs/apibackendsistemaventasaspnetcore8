@@ -17,7 +17,7 @@ public partial class Usuario
 
     public bool? EsActivo { get; set; }
 
-    public string? Foto { get; set; }
+    public string? foto { get; set; }
 
     public DateTime? FechaRegistro { get; set; }
 

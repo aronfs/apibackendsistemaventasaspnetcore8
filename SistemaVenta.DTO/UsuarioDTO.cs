@@ -14,6 +14,6 @@ namespace SistemaVenta.DTO
         public int? IdRol { get; set; }
         public string? Clave { get; set; }
         public int? EsActivo { get; set; }
-        public string? Foto { get; set; } // Se agregó el campo Foto
+        public string? foto { get; set; } // Se agregó el campo Foto
     }
 }
