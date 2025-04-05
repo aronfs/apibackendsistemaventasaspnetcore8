@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GEW+YSU+xGA=",
+  "dgSpecHash": "Bw7tZ7G7r0k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.Model\\SistemaVenta.Model.csproj",
+  "projectFilePath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.Model\\SistemaVenta.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arons\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\arons\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

@@ -40,6 +40,27 @@ namespace SistemaVenta.API.Controllers
             return Ok(response);
         }
 
+
+
+        [HttpGet]
+        [Route("ListaNoActivos")]
+        public async Task<IActionResult> ListaNoActivos()
+        {
+            var response = new Response<List<UsuarioDTO>>();
+
+            try
+            {
+                response.status = true;
+                response.Value = await _usuarioService.ListaNoActivos();
+            }
+            catch (Exception ex)
+            {
+                response.status = false;
+                response.msg = ex.Message;
+            }
+            return Ok(response);
+        }
+
         [HttpGet]
         [Route("ObtenerFotoPorCorreo/{correo}")]
         public async Task<IActionResult> ObtenerFotoPorCorreo(string correo)
@@ -104,6 +125,8 @@ namespace SistemaVenta.API.Controllers
             return Ok(response);
         }
 
+
+
         [HttpPut]
         [Route("Editar")]
         public async Task<IActionResult> Editar([FromBody] UsuarioDTO modelo)
@@ -122,6 +145,44 @@ namespace SistemaVenta.API.Controllers
             return Ok(response);
         }
 
+        [HttpPut]
+        [Route("EliminarLogico/{id:int}")]
+        public async Task<IActionResult> EliminadoLogico(int id)
+        {
+            var response = new Response<bool>();
+            try
+            {
+                response.status = true;
+                response.Value = await _usuarioService.EliminadoLogico(id);
+                response.msg = "Se desactivó el usuario";
+
+            }
+            catch (Exception ex)
+            {
+                response.status = false;
+                response.msg = ex.Message;
+            }
+            return Ok(response);
+        }
+
+        [HttpPut]
+        [Route("ActivarUsuario/{id:int}")]
+        public async Task<IActionResult> ActivarUsuario(int id)
+        {
+            var response = new Response<bool>();
+            try
+            {
+                response.status = true;
+                response.Value = await _usuarioService.ActivarUsuario(id);
+                response.msg = "Se activó el usuario";
+            }
+            catch (Exception ex)
+            {
+                response.status = false;
+                response.msg = ex.Message;
+            }
+            return Ok(response);
+        }
 
         [HttpDelete]
         [Route("Eliminar/{id:int}")]
@@ -140,6 +201,11 @@ namespace SistemaVenta.API.Controllers
             }
             return Ok(response);
         }
+
+       
+
+
+
 
     }
 }

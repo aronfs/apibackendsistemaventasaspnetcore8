@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OHcwHXA3UdM=",
+  "dgSpecHash": "3S7g3Xzeoys=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
+  "projectFilePath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.DAL\\SistemaVenta.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arons\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.1\\microsoft.entityframeworkcore.9.0.1.nupkg.sha512",
     "C:\\Users\\arons\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.1\\microsoft.entityframeworkcore.abstractions.9.0.1.nupkg.sha512",

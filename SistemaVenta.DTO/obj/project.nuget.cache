@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w1HPVYQzEIM=",
+  "dgSpecHash": "xsWmMuRLEqw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.DTO\\SistemaVenta.DTO.csproj",
+  "projectFilePath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.DTO\\SistemaVenta.DTO.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

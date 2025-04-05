@@ -137,6 +137,22 @@
   },
   {
     "ContainingType": "SistemaVenta.API.Controllers.UsuarioController",
+    "Method": "ActivarUsuario",
+    "RelativePath": "api/Usuario/ActivarUsuario/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaVenta.API.Controllers.UsuarioController",
     "Method": "Editar",
     "RelativePath": "api/Usuario/Editar",
     "HttpMethod": "PUT",
@@ -156,6 +172,22 @@
     "Method": "Eliminar",
     "RelativePath": "api/Usuario/Eliminar/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaVenta.API.Controllers.UsuarioController",
+    "Method": "EliminadoLogico",
+    "RelativePath": "api/Usuario/EliminarLogico/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -203,6 +235,16 @@
     "ContainingType": "SistemaVenta.API.Controllers.UsuarioController",
     "Method": "Lista",
     "RelativePath": "api/Usuario/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaVenta.API.Controllers.UsuarioController",
+    "Method": "ListaNoActivos",
+    "RelativePath": "api/Usuario/ListaNoActivos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

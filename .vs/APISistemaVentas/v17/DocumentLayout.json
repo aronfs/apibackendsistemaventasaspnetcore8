@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\",
+  "WorkspaceRootPath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|c:\\users\\arons\\source\\repos\\apisistemaventas\\sistemaventa.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|c:\\users\\arons\\desktop\\apisistemaventas\\apibackendsistemaventasaspnetcore8\\sistemaventa.bll\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|solutionrelative:sistemaventa.bll\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|c:\\users\\arons\\desktop\\apisistemaventas\\apibackendsistemaventasaspnetcore8\\sistemaventa.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|solutionrelative:sistemaventa.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|c:\\users\\arons\\desktop\\apisistemaventas\\apibackendsistemaventasaspnetcore8\\sistemaventa.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EEC3673-B94A-4201-AED5-E34D01DD486F}|SistemaVenta.API\\SistemaVenta.API.csproj|solutionrelative:sistemaventa.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|c:\\users\\arons\\desktop\\apisistemaventas\\apibackendsistemaventasaspnetcore8\\sistemaventa.bll\\services\\contrato\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206F834-0052-423A-A81D-8D3ABC7CCEE4}|SistemaVenta.BLL\\SistemaVenta.BLL.csproj|solutionrelative:sistemaventa.bll\\services\\contrato\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,23 +26,65 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
+              "RelativeDocumentMoniker": "SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
+              "ToolTip": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
+              "RelativeToolTip": "SistemaVenta.BLL\\Services\\Contrato\\IUsuarioService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T00:03:01.454Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Program.cs",
-              "RelativeDocumentMoniker": "SistemaVenta.API\\Program.cs",
-              "ToolTip": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\Program.cs",
-              "RelativeToolTip": "SistemaVenta.API\\Program.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAiwJQAAAAAAAAAAAAAAA==",
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "SistemaVenta.BLL\\Services\\UsuarioService.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T23:33:08.903Z",
+              "WhenOpened": "2025-04-04T21:59:16.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\Program.cs",
+              "RelativeDocumentMoniker": "SistemaVenta.API\\Program.cs",
+              "ToolTip": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\Program.cs",
+              "RelativeToolTip": "SistemaVenta.API\\Program.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAQwGMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T21:21:03.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "SistemaVenta.API\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "SistemaVenta.API\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAkwLIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T00:05:51.997Z",
               "EditorCaption": ""
             }
           ]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using AutoMapper;
@@ -29,7 +30,9 @@ namespace SistemaVenta.BLL.Services
             try
             {
                 var queryUsuario = await _usuarioRepository.Consultar();
-                var listaUsuario = queryUsuario.Include(rol => rol.IdRolNavigation)
+                var listaUsuario = queryUsuario
+                    .Include(rol => rol.IdRolNavigation)
+                    .Where(u => u.EsActivo == true) // Filtrar solo los usuarios activos
                     .Select(u => new Usuario
                     {
                         IdUsuario = u.IdUsuario,
@@ -40,7 +43,8 @@ namespace SistemaVenta.BLL.Services
                         EsActivo = u.EsActivo,
                         FechaRegistro = u.FechaRegistro,
                         foto = u.foto
-                    }).ToList();
+                    })
+                    .ToList();
 
                 return _mapper.Map<List<UsuarioDTO>>(listaUsuario);
             }
@@ -50,19 +54,82 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-         public async Task<UsuarioDTO> Crear(UsuarioDTO modelo)
-         {
-             try
-             {
+        public async Task<List<UsuarioDTO>> ListaNoActivos()
+        {
+            try
+            {
+                var queryUsuario = await _usuarioRepository.Consultar();
+                var listaUsuario = queryUsuario
+                    .Include(rol => rol.IdRolNavigation)
+                    .Where(u => u.EsActivo == false) // Filtrar solo los usuarios inactivos
+                    .Select(u => new Usuario
+                    {
+                        IdUsuario = u.IdUsuario,
+                        NombreCompleto = u.NombreCompleto,
+                        Correo = u.Correo,
+                        IdRol = u.IdRol,
+                        Clave = u.Clave,
+                        EsActivo = u.EsActivo,
+                        FechaRegistro = u.FechaRegistro,
+                        foto = u.foto
+                    })
+                    .ToList();
+
+                return _mapper.Map<List<UsuarioDTO>>(listaUsuario);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<UsuarioDTO> Crear(UsuarioDTO modelo)
+        {
+            try
+            {
+                // Normalizar el correo
+                var correoNormalizado = modelo.Correo?.Trim().ToLower();
+
+                // Validaciones generales
+                if (string.IsNullOrWhiteSpace(correoNormalizado))
+                    throw new ArgumentException("El correo es obligatorio.");
+
+                if (!IsValidEmail(correoNormalizado))
+                    throw new ArgumentException("El formato del correo no es válido.");
+
+                if (string.IsNullOrWhiteSpace(modelo.Clave))
+                    throw new ArgumentException("La contraseña es obligatoria.");
+
+                if (!IsPasswordStrong(modelo.Clave))
+                    throw new ArgumentException("La contraseña no cumple con los requisitos de seguridad.");
+
+                if (string.IsNullOrWhiteSpace(modelo.NombreCompleto))
+                    throw new ArgumentException("El nombre es obligatorio.");
+
+                if (!EsNombreValido(modelo.NombreCompleto))
+                    throw new ArgumentException("El nombre no parece válido. Usa un nombre real y bien escrito.");
+
+                if (string.IsNullOrWhiteSpace(modelo.foto))
+                    throw new ArgumentException("La foto es obligatoria.");
+
+                // Validar si el correo ya existe en la base de datos (normalizado)
+                var existeUsuario = await _usuarioRepository.Consultar(
+                    u => u.Correo.Trim().ToLower() == correoNormalizado
+                );
+
+                if (existeUsuario.Any())
+                    throw new TaskCanceledException("El correo ya está en uso. Por favor, elige otro.");
+
                 var usuarioCrear = _mapper.Map<Usuario>(modelo);
 
-                // Guardar directamente la URL de la imagen
-                usuarioCrear.foto = !string.IsNullOrEmpty(modelo.foto) ? modelo.foto : null;
+                // Guardar directamente la URL de la imagen y el correo normalizado
+                usuarioCrear.foto = modelo.foto;
+                usuarioCrear.Correo = correoNormalizado;
 
                 var usuarioCreado = await _usuarioRepository.Crear(usuarioCrear);
 
                 if (usuarioCreado.IdUsuario == 0)
-                    throw new TaskCanceledException("El usuario no se pudo crear!!!!");
+                    throw new TaskCanceledException("El usuario no se pudo crear.");
 
                 var query = await _usuarioRepository.Consultar(u => u.IdUsuario == usuarioCreado.IdUsuario);
                 usuarioCreado = query.Include(rol => rol.IdRolNavigation).First();
@@ -74,32 +141,50 @@ namespace SistemaVenta.BLL.Services
                 throw;
             }
         }
-        
-        
+
+
+
+
+
 
         public async Task<bool> Editar(UsuarioDTO modelo)
         {
             try
             {
+                if (modelo == null)
+                    throw new ArgumentException("El modelo no puede ser nulo.");
+
+                if (string.IsNullOrWhiteSpace(modelo.NombreCompleto))
+                    throw new ArgumentException("El nombre no puede estar vacío.");
+                if (!EsNombreValido(modelo.NombreCompleto))
+                    throw new ArgumentException("El nombre no parece válido. Usa un nombre real y bien escrito.");
+                if (string.IsNullOrWhiteSpace(modelo.Correo) || !EsCorreoValido(modelo.Correo))
+                    throw new ArgumentException("El correo no es válido.");
+
+                if (!IsPasswordStrong(modelo.Clave))
+                    throw new ArgumentException("La contraseña no cumple con los requisitos de seguridad.");
+
                 var usuarioModelo = _mapper.Map<Usuario>(modelo);
                 var usuarioEncontrado = await _usuarioRepository.Obtener(u => u.IdUsuario == usuarioModelo.IdUsuario);
 
                 if (usuarioEncontrado == null)
-                    throw new TaskCanceledException("El usuario no Existe!!!!");
-
+                    throw new TaskCanceledException("El usuario no existe.");
+                var existeUsuario = await _usuarioRepository.Consultar(u => u.Correo == modelo.Correo);
+                if (existeUsuario.Any())
+                    throw new TaskCanceledException("El correo ya está registrado por otro usuario existente. Por favor, elige otro.");
                 usuarioEncontrado.NombreCompleto = usuarioModelo.NombreCompleto;
                 usuarioEncontrado.Correo = usuarioModelo.Correo;
                 usuarioEncontrado.IdRol = usuarioModelo.IdRol;
                 usuarioEncontrado.Clave = usuarioModelo.Clave;
                 usuarioEncontrado.EsActivo = usuarioModelo.EsActivo;
-                // Guardar la URL en la base de datos
-                usuarioEncontrado.foto = !string.IsNullOrEmpty(usuarioModelo.foto) ? usuarioModelo.foto : usuarioEncontrado.foto;
 
+                // Validar la foto antes de asignarla
+                usuarioEncontrado.foto = !string.IsNullOrWhiteSpace(usuarioModelo.foto) ? usuarioModelo.foto : usuarioEncontrado.foto;
 
                 bool respuesta = await _usuarioRepository.Editar(usuarioEncontrado);
 
                 if (!respuesta)
-                    throw new TaskCanceledException("El usuario no se pudo editar!!!!");
+                    throw new TaskCanceledException("El usuario no se pudo editar.");
 
                 return respuesta;
             }
@@ -108,6 +193,13 @@ namespace SistemaVenta.BLL.Services
                 throw;
             }
         }
+
+        // Método auxiliar para validar correos electrónicos
+        private bool EsCorreoValido(string correo)
+        {
+            return Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
 
         public async Task<bool> Eliminar(int id)
         {
@@ -119,11 +211,17 @@ namespace SistemaVenta.BLL.Services
                     throw new TaskCanceledException("El usuario no Existe!!!!");
 
                 bool respuesta = await _usuarioRepository.Eliminar(usuarioEncontrado);
-
+                
                 if (!respuesta)
+                {
                     throw new TaskCanceledException("El usuario no se pudo eliminar!!!!");
+                }
+                else {
+                    throw new ArgumentException("Se elimino permanentemente el usuario");
+                }
 
-                return respuesta;
+
+                    return respuesta;
             }
             catch
             {
@@ -163,6 +261,87 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-       
+        private bool IsValidEmail(string email)
+        {
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        private bool IsPasswordStrong(string password)
+        {
+            // Mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial
+            return Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$");
+        }
+
+        private bool EsNombreValido(string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+                return false;
+
+            // Solo letras, espacios, tildes, y ñ
+            var regex = new Regex(@"^[A-ZÁÉÍÓÚÑa-záéíóúñ ]+$");
+            if (!regex.IsMatch(nombre))
+                return false;
+
+            // No todo mayúsculas ni todo minúsculas
+            if (nombre == nombre.ToUpper() || nombre == nombre.ToLower())
+                return false;
+
+            // Palabras separadas razonables
+            var palabras = nombre.Trim().Split(' ');
+            if (palabras.Length == 0 || palabras.Length > 3)
+                return false;
+
+            if (palabras.Any(p => p.Length < 2))
+                return false;
+
+            // Longitud general aceptable
+            if (nombre.Length < 3 || nombre.Length > 50)
+                return false;
+
+            return true;
+        }
+
+        public async Task<bool> EliminadoLogico(int id)
+        {
+            try
+            {
+                var usuarioEncontrado = await _usuarioRepository.Obtener(u => u.IdUsuario == id);
+
+                if (usuarioEncontrado == null)
+                    throw new TaskCanceledException("El usuario no existe!!!!");
+
+                // Cambiar estado a inactivo
+                usuarioEncontrado.EsActivo = false;
+
+                bool respuesta = await _usuarioRepository.Editar(usuarioEncontrado);
+
+                if (!respuesta)
+                    throw new TaskCanceledException("El usuario no se pudo desactivar!!!!");
+
+                return respuesta; 
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> ActivarUsuario(int id)
+        {
+            var usuario = await _usuarioRepository.Obtener(u => u.IdUsuario == id);
+
+            if (usuario == null)
+                throw new TaskCanceledException("El usuario no existe.");
+
+            usuario.EsActivo = true;
+
+            bool actualizado = await _usuarioRepository.Editar(usuario);
+
+            if (!actualizado)
+                throw new TaskCanceledException("No se pudo activar el usuario.");
+
+            return actualizado; //
+        }
+
     }
 }

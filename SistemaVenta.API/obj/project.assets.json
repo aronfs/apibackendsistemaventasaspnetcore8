@@ -2138,11 +2138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\SistemaVenta.API.csproj",
+      "projectUniqueName": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\SistemaVenta.API.csproj",
       "projectName": "SistemaVenta.API",
-      "projectPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\SistemaVenta.API.csproj",
+      "projectPath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\SistemaVenta.API.csproj",
       "packagesPath": "C:\\Users\\arons\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.API\\obj\\",
+      "outputPath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2163,14 +2163,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj": {
-              "projectPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj"
+            "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj": {
+              "projectPath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.BLL\\SistemaVenta.BLL.csproj"
             },
-            "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.DTO\\SistemaVenta.DTO.csproj": {
-              "projectPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.DTO\\SistemaVenta.DTO.csproj"
+            "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.DTO\\SistemaVenta.DTO.csproj": {
+              "projectPath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.DTO\\SistemaVenta.DTO.csproj"
             },
-            "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj": {
-              "projectPath": "C:\\Users\\arons\\source\\repos\\APISistemaVentas\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj"
+            "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj": {
+              "projectPath": "C:\\Users\\arons\\Desktop\\APISistemaVentas\\apibackendsistemaventasaspnetcore8\\SistemaVenta.IOC\\SistemaVenta.IOC.csproj"
             }
           }
         }

@@ -82,11 +82,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("NuevaPoliticaCors", policy =>
     {
-        policy.AllowAnyOrigin()    // Permite cualquier origen (ajustar según seguridad)
-              .AllowAnyMethod()    // Permite cualquier método (GET, POST, etc.)
-              .AllowAnyHeader()
-              .AllowCredentials()
-              .WithOrigins("http://localhost:4200", "http://10.0.2.2");   // Permite cualquier encabezado
+        // Permite cualquier encabezado
+
+        policy.SetIsOriginAllowed(_ => true)  // Permite cualquier origen
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+
+
     });
 });
 
@@ -110,52 +112,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
