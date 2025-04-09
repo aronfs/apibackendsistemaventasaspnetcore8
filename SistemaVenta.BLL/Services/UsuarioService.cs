@@ -83,9 +83,9 @@ namespace SistemaVenta.BLL.Services
             }
         }
 
-        public async Task<UsuarioDTO> Crear(UsuarioDTO modelo)
+        public async Task<UsuarioDTO> Crear(UsuarioDTO modelo)  
         {
-            try
+            try        
             {
                 // Normalizar el correo
                 var correoNormalizado = modelo.Correo?.Trim().ToLower();
