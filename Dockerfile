@@ -30,7 +30,7 @@ WORKDIR /app
 EXPOSE 5185
 
 # Variables opcionales
-ENV ASPNETCORE_URLS=http://+:5186
+ENV ASPNETCORE_URLS=http://+:5185
 ENV ASPNETCORE_ENVIRONMENT=Production
 
 # Copiar la app publicada
